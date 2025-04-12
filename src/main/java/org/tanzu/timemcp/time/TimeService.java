@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class TimeService {
     private final RestTemplate restTemplate;
-    private static final String API_URL = "http://worldtimeapi.org/api/ip";
+    private static final String API_URL = "https://timeapi.io/api/Time/current/zone?timeZone=UTC";
 
     public TimeService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -25,9 +25,18 @@ public class TimeService {
 
     // Time response model
     public record TimeResponse(
-            String datetime,
-            String timezone,
-            String utc_datetime,
-            String utc_offset
+            String year,
+            String month,
+            String day,
+            String hour,
+            String minute,
+            String seconds,
+            String milliSeconds,
+            String dateTime,
+            String date,
+            String time,
+            String timeZone,
+            String dayOfWeek,
+            boolean dstActive
     ) {}
 }
